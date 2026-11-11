@@ -1,0 +1,28 @@
+name: "Feature Request"
+description: "Suggest an idea or enhancement for HazardWatch"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thank you for suggesting a feature for HazardWatch!"
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problem or Industrial Need"
+      description: "Describe what limitation or requirement this feature addresses."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed Solution"
+      description: "Describe how you envision this feature working."
+    validations:
+      required: true
+  - type: textarea
+    id: safety_impact
+    attributes:
+      label: "Safety & Hardware Considerations"
+      description: "Does this affect physical actuators, fail-safe modes, or sensor acquisitions?"
+    validations:
+      required: false

@@ -1,0 +1,45 @@
+name: "Bug Report"
+description: "File a bug or issue found in HazardWatch"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for reporting an issue in HazardWatch! Please provide sufficient details."
+  - type: input
+    id: component
+    attributes:
+      label: "Affected Component"
+      description: "Which part of the stack is affected?"
+      placeholder: "e.g., Firmware, Backend, SCADA Frontend, Serial Acquisition, Scripts"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Bug Description"
+      description: "A clear and concise description of what the bug is."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to Reproduce"
+      description: "Steps to reproduce the behavior."
+      placeholder: |
+        1. Run scripts\start.ps1
+        2. Open http://localhost:3000
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Environment Details"
+      description: "OS version, Python version, Node.js version, and hardware details."
+      placeholder: |
+        - OS: Windows 11 64-bit
+        - Python: 3.11.0
+        - Node.js: 20.x
+        - COM Port / Chip: CP2102 / CH340 on COM4
+    validations:
+      required: true
