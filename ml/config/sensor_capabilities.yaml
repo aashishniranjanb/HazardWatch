@@ -1,0 +1,68 @@
+version: "1.0.0"
+environment: "General Industrial Manufacturing Factory"
+description: "Explicit sensor boundary constraints, physical capabilities, and non-supported claims"
+
+sensors:
+  MQ-2:
+    physical_type: "Metal Oxide Semiconductor (SnO2)"
+    intended_use: "Educational & Prototype Gas-Response Screening"
+    adc_resolution: "12-bit (0 - 4095) on ESP32 ADC1"
+    supported_detection_capabilities:
+      - "Broad combustible hydrocarbon response pattern (LPG, propane, methane, hydrogen mixtures)"
+      - "Smoke-like aerosol particulate response pattern from combustion"
+      - "Relative influx rate and venting decay tracking"
+    unsupported_detection_capabilities:
+      - "Chemical discrimination between individual combustible species (cannot isolate LPG vs Methane)"
+      - "Certified quantitative concentration (ppm or % LEL measurement)"
+      - "Life-safety certified gas detection"
+    operating_constraints:
+      - "Requires minimum 24-48h initial sensor burn-in / 3-5 min warm-up cycle"
+      - "Subject to non-stationary thermal and ambient humidity drift"
+
+  MQ-135:
+    physical_type: "Metal Oxide Semiconductor (SnO2)"
+    intended_use: "Educational & Prototype Air Quality Screening"
+    adc_resolution: "12-bit (0 - 4095) on ESP32 ADC1"
+    supported_detection_capabilities:
+      - "Broad air-contaminant and volatile solvent response pattern"
+      - "Benzene-series, alcohol, and volatile organic compound (VOC) response monitoring"
+      - "Relative baseline drift tracking"
+    unsupported_detection_capabilities:
+      - "Accurate quantification or differentiation of individual toxic species (e.g. Ammonia NH3, Hydrogen Sulfide H2S, Benzene, Toluene)"
+      - "Certified Occupational Exposure Limit (OEL/TLV/TWA) threshold tracking"
+    operating_constraints:
+      - "Heater temperature sensitivity; cross-sensitive to ambient temperature and water vapor"
+
+  DHT11:
+    physical_type: "Resistive Humidity & NTC Thermistor"
+    intended_use: "Ambient Climatic Context"
+    supported_detection_capabilities:
+      - "Ambient temperature monitoring (0°C to 50°C ±2°C)"
+      - "Relative humidity monitoring (20% to 90% RH ±5%)"
+    unsupported_detection_capabilities:
+      - "Gas concentration or chemical composition analysis"
+      - "Oxygen or chemical partial pressure monitoring"
+
+  ESP32_DevKit_V1:
+    physical_type: "Dual-Core Xtensa LX6 Microcontroller"
+    supported_capabilities:
+      - "Deterministic sensor sampling and feature extraction at 2Hz"
+      - "Local hardware baseline tracking and local threshold state-machine"
+      - "Autonomous local fail-safe actuation without server dependency"
+      - "TFLite Micro int8 classification deployment"
+    unsupported_capabilities:
+      - "Certified industrial safety instrumented system (SIL/IEC 61508) controller"
+
+  Relay_and_Air_Pump:
+    physical_type: "Electromechanical Relay & 12V DC Diaphragm Air Pump"
+    supported_capabilities:
+      - "Electrical circuit switching actuation"
+      - "Experimental benchtop airflow simulation"
+    unsupported_capabilities:
+      - "Certified explosion-proof ATEX/IECEx extraction fan"
+      - "Closed-loop volumetric air exchange validation (relay state does not prove atmospheric clearance)"
+
+industrial_safety_disclaimer: >
+  This system is an academic and educational industrial prototype for atmospheric gas-response pattern intelligence.
+  It is NOT a certified life-safety device, fire alarm panel, or certified personal toxic gas monitor.
+  All CRITICAL alerts represent abnormal sensor dynamics requiring verification with certified, calibrated industrial instruments.

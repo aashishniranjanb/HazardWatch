@@ -1,0 +1,35 @@
+{
+  "agreement_percentage": 68.35,
+  "max_probability_divergence": 1.0,
+  "mean_probability_divergence": 0.1604,
+  "keras_float32": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "artifact_size_kb": 38.67,
+    "latency_ms": 0.095,
+    "per_class_recall": {
+      "MIXTURE": 1.0,
+      "NORMAL_BASELINE": 1.0,
+      "SMOKE": 1.0,
+      "VOC_RESPONSE": 1.0
+    }
+  },
+  "tflite_int8": {
+    "accuracy": 0.6835,
+    "macro_f1": 0.2394,
+    "artifact_size_kb": 4.85,
+    "latency_ms": 0.007,
+    "per_class_recall": {
+      "MIXTURE": 0.0,
+      "NORMAL_BASELINE": 1.0,
+      "SMOKE": 0.0,
+      "VOC_RESPONSE": 0.08
+    }
+  },
+  "quantization_metadata": {
+    "input_scale": 0.0036353496834635735,
+    "input_zero_point": 38,
+    "output_scale": 0.00390625,
+    "output_zero_point": -128
+  }
+}

@@ -1,0 +1,172 @@
+version: "1.0.0"
+description: "Source-aware canonical label registry for industrial hazardous gas intelligence"
+
+canonical_classes:
+  NORMAL_BASELINE:
+    description: "Ambient clean air, baseline reference, or nominal operating atmosphere without hazardous gas introduction"
+  SMOKE:
+    description: "Smoke particle response from deliberate combustion sources"
+  COMBUSTIBLE_GAS:
+    description: "Flammable hydrocarbon gases (LPG, Propane, Methane, Butane, Hydrogen)"
+  ALCOHOL_RESPONSE:
+    description: "Ethanol or alcohol vapor response"
+  VOC_RESPONSE:
+    description: "Volatile organic compounds, cosmetic perfumes, solvents"
+  MIXTURE:
+    description: "Concurrent multi-source gas exposure (e.g. Smoke + Perfume)"
+  AIR_POLLUTION_AMOEBA:
+    description: "Environmental ambient air pollution indicators (NO2, SO2, CO, PM2.5/PM10)"
+  UNKNOWN_UNMAPPED:
+    description: "Unconfirmed, out-of-distribution, or undocumented category"
+
+sources:
+  Gas_Sensors_Measurements:
+    filename: "Gas_Sensors_Measurements.csv"
+    sensors: ["MQ2", "MQ3", "MQ5", "MQ6", "MQ7", "MQ8", "MQ135"]
+    mapping_status: "VERIFIED"
+    labels:
+      NoGas:
+        canonical: "NORMAL_BASELINE"
+        confidence: 1.0
+        verified: true
+        notes: "Clean ambient environment baseline reading"
+      Perfume:
+        canonical: "VOC_RESPONSE"
+        confidence: 1.0
+        verified: true
+        notes: "Aerosol perfume/VOC vapor exposure"
+      Smoke:
+        canonical: "SMOKE"
+        confidence: 1.0
+        verified: true
+        notes: "Combustion smoke aerosol exposure"
+      Mixture:
+        canonical: "MIXTURE"
+        confidence: 1.0
+        verified: true
+        notes: "Simultaneous smoke and perfume combination"
+
+  multi_sensor_data:
+    filename: "multi_sensor_data.csv"
+    sensors: ["MQ2", "MQ135", "MQ7"]
+    mapping_status: "RAW_UNMAPPED"
+    labels:
+      "0":
+        canonical: "NORMAL_BASELINE"
+        confidence: 0.95
+        verified: true
+        notes: "Matches baseline dataset label convention (ambient baseline)"
+      "1":
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Experimental trial class 1 - pending protocol verification"
+      "2":
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Experimental trial class 2 - pending protocol verification"
+      "3":
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Experimental trial class 3 - pending protocol verification"
+      "4":
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Experimental trial class 4 - pending protocol verification"
+
+  multi_sensor_data_baseline:
+    filename: "multi_sensor_data_baseline.csv"
+    sensors: ["MQ2", "MQ135", "MQ7"]
+    mapping_status: "VERIFIED"
+    labels:
+      "0":
+        canonical: "NORMAL_BASELINE"
+        confidence: 1.0
+        verified: true
+        notes: "Continuous stability baseline collection in nominal room atmosphere"
+
+  dataset_alcohol_detection_using_gas_sensors:
+    filename: "dataset_alcohol_detection_using_gas_sensors.csv"
+    sensors: ["MQ-3", "MQ-135", "DHT11_Temp", "DHT11_Hum"]
+    mapping_status: "VERIFIED"
+    labels:
+      0:
+        canonical: "NORMAL_BASELINE"
+        confidence: 1.0
+        verified: true
+        notes: "No alcohol vapor detected (sober / baseline breath / ambient)"
+      1:
+        canonical: "ALCOHOL_RESPONSE"
+        confidence: 1.0
+        verified: true
+        notes: "Alcohol vapor detected on breath / breathalyzer chamber"
+
+  MQ135SensorData:
+    filename: "MQ135SensorData.csv"
+    sensors: ["Gas1", "Gas2", "Gas3", "Gas4", "Gas5", "Gas6"]
+    mapping_status: "RAW_UNMAPPED"
+    labels:
+      0:
+        canonical: "NORMAL_BASELINE"
+        confidence: 0.8
+        verified: false
+        notes: "Nominal clean air class index 0"
+      1:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Multi-gas trial class 1"
+      2:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Multi-gas trial class 2"
+      3:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Multi-gas trial class 3"
+      4:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Multi-gas trial class 4"
+      5:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Multi-gas trial class 5"
+      6:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Multi-gas trial class 6"
+
+  Air_Quality_ADL:
+    filename: "Air Quality dataset for ADL classification.csv"
+    sensors: ["Sensor_0", "Sensor_1", "Sensor_2", "Sensor_3", "Sensor_4", "Sensor_5"]
+    mapping_status: "ACTIVITY_BASED"
+    labels:
+      1:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "Activities of Daily Living Class 1 (e.g. Cooking / cleaning activity)"
+      2:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "ADL Class 2"
+      3:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "ADL Class 3"
+      4:
+        canonical: "UNKNOWN_UNMAPPED"
+        confidence: 0.0
+        verified: false
+        notes: "ADL Class 4"

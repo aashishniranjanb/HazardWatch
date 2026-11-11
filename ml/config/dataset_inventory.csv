@@ -1,0 +1,13 @@
+filename,size_kb,rows,cols,has_mq2,has_mq135,has_mq7,has_dht,label_col,label_count,profile
+Air Quality dataset for ADL classification.csv,53.4,1845,7,NO,NO,NO,NO,6,4,INCOMPATIBLE
+Gas_Sensors_Measurements.csv,251.96,6400,9,YES,YES,YES,NO,Gas,4,MQ2_MQ135_DUAL
+Kitchen Environment Air Quality Dataset.csv,87.35,1253,13,NO,NO,NO,NO,NONE,0,INCOMPATIBLE
+MQ135SensorData.csv,7690.82,100422,15,NO,NO,NO,NO,Class,7,INCOMPATIBLE
+dataset_alcohol_detection_using_gas_sensors.csv,38.95,1942,5,NO,YES,NO,YES,Alcohol Presence,2,MQ135_ONLY
+gsalc.csv,5099.64,90,9002,NO,NO,NO,NO,6,41,INCOMPATIBLE
+kitchen_data.csv,87.35,1253,13,NO,NO,NO,NO,NONE,0,INCOMPATIBLE
+log_temp.csv,10.27,336,4,NO,NO,NO,YES,NONE,0,ENVIRONMENTAL_ONLY
+mq2_data.csv,912.76,15994,8,YES,NO,NO,NO,NONE,0,MQ2_ONLY
+multi_sensor_data.csv,86.91,812,18,YES,YES,YES,NO,label,5,MQ2_MQ135_DUAL
+multi_sensor_data_baseline.csv,1120.81,12175,15,YES,YES,YES,NO,label,1,MQ2_MQ135_DUAL
+my_ap_dataset_A Real-time Dataset of Air Pollution Monitoring Generated Using IoT.csv,14976.36,155405,11,NO,NO,NO,NO,NONE,0,INCOMPATIBLE

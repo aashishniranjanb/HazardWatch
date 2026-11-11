@@ -1,0 +1,26 @@
+# Project_A1 Backend Python Requirements
+# Target: Python 3.10 / 3.11 64-bit on Windows
+
+# Web API and Async Networking
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+websockets>=12.0
+pydantic>=2.6.0
+requests>=2.31.0
+httpx>=0.27.0
+
+# Hardware Serial & System Monitoring
+pyserial>=3.5
+psutil>=5.9.0
+
+# Data Engineering & Science
+numpy>=1.26.0
+pandas>=2.2.0
+scipy>=1.12.0
+joblib>=1.3.0
+pyyaml>=6.0.1
+
+# Machine Learning & Edge Inference
+scikit-learn>=1.4.0
+xgboost>=2.0.0
+tensorflow>=2.15.0; sys_platform == 'win32'

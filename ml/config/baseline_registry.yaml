@@ -1,0 +1,76 @@
+version: 1.0.0
+description: Multi-tiered dual baseline registry distinguishing verified research
+  datasets from physical hardware calibrations
+baselines:
+  research_baseline_prototype:
+    source_type: VERIFIED_DATASET
+    source_dataset: multi_sensor_data_baseline.csv
+    calibration_version: 1.0.0
+    calibration_timestamp: '2026-04-01T00:45:49'
+    verified: true
+    notes: Continuous stability run on prototype rig (12,175 samples) in room ambient
+      clean air.
+    mq2:
+      sensor_identity: MQ-2 (Prototype Rig)
+      mean: 337.94
+      std: 41.86
+      min: 285.0
+      max: 531.0
+      sample_count: 12175
+      unit: ADC_counts
+    mq135:
+      sensor_identity: MQ-135 (Prototype Rig)
+      mean: 1522.83
+      std: 140.47
+      min: 1390.0
+      max: 2023.0
+      sample_count: 12175
+      unit: ADC_counts
+  research_baseline_bench_dataset:
+    source_type: VERIFIED_DATASET
+    source_dataset: Gas_Sensors_Measurements.csv (NoGas)
+    calibration_version: 1.0.0
+    calibration_timestamp: '2024-01-01T00:00:00'
+    verified: true
+    notes: Clean air baseline records from 6,400-sample research bench.
+    mq2:
+      sensor_identity: MQ2 (Research Bench)
+      mean: 748.39
+      std: 49.57
+      min: 555.0
+      max: 809.0
+      sample_count: 1600
+      unit: ADC_counts
+    mq135:
+      sensor_identity: MQ135 (Research Bench)
+      mean: 474.47
+      std: 30.25
+      min: 387.0
+      max: 584.0
+      sample_count: 1600
+      unit: ADC_counts
+  hardware_calibration_active:
+    source_type: HARDWARE_CALIBRATION
+    source_dataset: SESSION_PHYS_02_STABILIZED
+    calibration_version: 1.0.0
+    calibration_timestamp: '2026-11-11T11:02:01'
+    verified: false
+    notes: Simulated baseline profile reference (steady state t>=900s, mean 339.57
+      ADC). Pending physical ESP32 acquisition.
+    mq2:
+      sensor_identity: MQ-2 (Active ESP32 DevKit V1)
+      mean: 339.57
+      std: 3.79
+      min: 329
+      max: 352
+      sample_count: 1800
+      unit: ADC_counts
+    mq135:
+      sensor_identity: MQ-135 (Active ESP32 DevKit V1)
+      mean: 1520.96
+      std: 8.01
+      min: 1496
+      max: 1545
+      sample_count: 1800
+      unit: ADC_counts
+    physical_hardware_confirmed: false

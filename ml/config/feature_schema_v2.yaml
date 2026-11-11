@@ -1,0 +1,75 @@
+version: "2.0.0"
+description: "Baseline-relative and temporal feature schema for edge and server ML models (M2.5)"
+
+sampling_assumptions:
+  nominal_sample_rate_hz: 2.0
+  window_size_samples: 10
+  step_size_samples: 2
+
+features:
+  # Baseline-Relative Features (Source-Aware)
+  - name: "mq2_delta_baseline"
+    type: "float32"
+    source: "MQ2"
+    unit: "ADC_counts"
+    description: "Difference between current MQ-2 window mean and source reference baseline (mean_window - baseline_mq2)"
+  - name: "mq135_delta_baseline"
+    type: "float32"
+    source: "MQ135"
+    unit: "ADC_counts"
+    description: "Difference between current MQ-135 window mean and source reference baseline (mean_window - baseline_mq135)"
+  - name: "mq2_ratio_baseline"
+    type: "float32"
+    source: "MQ2"
+    unit: "dimensionless"
+    description: "Ratio of current MQ-2 window mean to source reference baseline (mean_window / (baseline_mq2 + 1e-4))"
+  - name: "mq135_ratio_baseline"
+    type: "float32"
+    source: "MQ135"
+    unit: "dimensionless"
+    description: "Ratio of current MQ-135 window mean to source reference baseline (mean_window / (baseline_mq135 + 1e-4))"
+
+  # Cross-Sensor Interaction Feature
+  - name: "gas_ratio_mq2_to_mq135"
+    type: "float32"
+    source: "DERIVED"
+    unit: "dimensionless"
+    description: "Ratio of mq2_mean / (mq135_mean + 1e-4) to isolate selective chemical affinity"
+
+  # Temporal Dynamics: Slopes
+  - name: "mq2_slope"
+    type: "float32"
+    source: "MQ2"
+    unit: "ADC_counts/sec"
+    description: "Linear rate of change across window (positive = gas influx, negative = venting)"
+  - name: "mq135_slope"
+    type: "float32"
+    source: "MQ135"
+    unit: "ADC_counts/sec"
+    description: "Linear rate of change across window"
+
+  # Stability & Turbulence Features
+  - name: "mq2_std"
+    type: "float32"
+    source: "MQ2"
+    unit: "ADC_counts"
+    description: "Standard deviation of ADC over window (captures turbulence/instability)"
+  - name: "mq135_std"
+    type: "float32"
+    source: "MQ135"
+    unit: "ADC_counts"
+    description: "Standard deviation of ADC over window"
+  - name: "mq2_delta_window"
+    type: "float32"
+    source: "MQ2"
+    unit: "ADC_counts"
+    description: "Peak-to-trough range (max - min) in window"
+  - name: "mq135_delta_window"
+    type: "float32"
+    source: "MQ135"
+    unit: "ADC_counts"
+    description: "Peak-to-trough range in window"
+
+normalization:
+  strategy: "StandardScaler fitted strictly on training partition"
+  target_edge: "TFLite Micro int8 full integer quantization"

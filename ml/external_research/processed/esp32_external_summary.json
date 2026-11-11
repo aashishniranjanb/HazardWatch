@@ -1,0 +1,15 @@
+{
+  "dataset_id": "ZENODO_ESP32_INDOOR_AIR_QUALITY_2026",
+  "total_records": 46897,
+  "gas_adc_mean": 555.31,
+  "gas_adc_std": 111.92,
+  "gas_adc_min": 118,
+  "gas_adc_max": 4095,
+  "temp_mean": 31.95,
+  "humidity_mean": 66.23,
+  "splits": {
+    "development": 19879,
+    "calibration": 18852,
+    "test": 8166
+  }
+}

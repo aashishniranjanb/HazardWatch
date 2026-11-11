@@ -1,0 +1,118 @@
+version: "1.0.0"
+facility_type: "General Industrial Manufacturing Factory"
+
+zones:
+  Z01:
+    zone_id: "Z01"
+    name: "Gas Storage and Distribution"
+    process_description: "Bulk pressurized cylinder storage, manifold distribution, and pipe supply headers."
+    primary_hazards: ["H01"]
+    potential_substances: ["LPG", "Propane", "Natural Gas (Methane)"]
+    installed_sensor_types: ["MQ-2", "DHT11"]
+    required_additional_sensors: ["Dedicated Optical/Catalytic LEL Combustible Gas Detector", "O2 Deficiency Monitor"]
+    ventilation_equipment: "Explosion-proof roof gravity vents and forced wall extraction fans"
+    operator_verification_steps:
+      - "Do NOT operate uncertified electrical switches in the vicinity"
+      - "Verify atmosphere with portable calibrated PID / LEL combustible detector"
+      - "Inspect manifold supply pressure regulators and isolation shutoff valves"
+    emergency_response_procedure: "Initiate Zone 1 isolation protocol; close manual main gas shutoff valve; evacuate sector if LEL > 20%."
+
+  Z02:
+    zone_id: "Z02"
+    name: "Boiler and Furnace Room"
+    process_description: "Thermal steam boilers, fuel combustion burner heads, and flue gas exhaust stacks."
+    primary_hazards: ["H01", "H03", "H04"]
+    potential_substances: ["Flue gases", "Carbon Monoxide (CO)", "Incomplete Combustion Smoke", "Natural Gas"]
+    installed_sensor_types: ["MQ-2", "DHT11"]
+    required_additional_sensors: ["Certified Electrochemical Carbon Monoxide (CO) Detector", "Stack Flue O2/CO Analyzer"]
+    ventilation_equipment: "Induced draft flue fans and motorized louvers"
+    operator_verification_steps:
+      - "Verify burner combustion efficiency and pilot flame stability"
+      - "Verify ambient CO levels with calibrated electrochemical single-gas monitor"
+      - "Inspect draft damper position and exhaust duct temperature"
+    emergency_response_procedure: "Trip boiler emergency stop (E-Stop); engage supplementary emergency exhaust dampers."
+
+  Z03:
+    zone_id: "Z03"
+    name: "Painting and Coating Section"
+    process_description: "Automated spray booths, manual paint application, and solvent-based flash-off tunnels."
+    primary_hazards: ["H02", "H07"]
+    potential_substances: ["Toluene", "Xylene", "Acetone", "VOC Solvent Vapors"]
+    installed_sensor_types: ["MQ-135", "DHT11"]
+    required_additional_sensors: ["Photoionization Detector (PID) for Total VOC", "Differential Pressure Airflow Sensor"]
+    ventilation_equipment: "Down-draft spray booth exhaust filters and volatile active carbon scrubbers"
+    operator_verification_steps:
+      - "Check differential pressure across exhaust filtration banks"
+      - "Verify solvent vapor concentration with calibrated PID detector"
+      - "Check compressed air supply lines for spray guns"
+    emergency_response_procedure: "Halt spray application; force continuous booth ventilation; inspect carbon filter bed."
+
+  Z04:
+    zone_id: "Z04"
+    name: "Chemical Storage & Decanting"
+    process_description: "Raw chemical drum storage, solvent dispensing, and pump transfer skid."
+    primary_hazards: ["H02", "H06"]
+    potential_substances: ["Volatile Solvents", "Industrial Cleaning Acids", "Ammonia Solutions"]
+    installed_sensor_types: ["MQ-135", "MQ-2", "DHT11"]
+    required_additional_sensors: ["Dedicated NH3 Electrochemical Detector", "Corrosive Acid Vapor Sensor"]
+    ventilation_equipment: "Continuous chemical fume extraction hoods and low-level exhaust ducts"
+    operator_verification_steps:
+      - "Check secondary containment sumps for chemical spills or pooling liquid"
+      - "Confirm fume extraction flow via local magnehelic differential pressure gauge"
+    emergency_response_procedure: "Evacuate personnel; deploy chemical absorbent spill sock; verify PPE level B before entry."
+
+  Z05:
+    zone_id: "Z05"
+    name: "Electrical Switchgear & Motor Control Center (MCC)"
+    process_description: "Medium-voltage switchgear panels, variable frequency drives (VFD), and motor distribution."
+    primary_hazards: ["H03"]
+    potential_substances: ["Thermal Decomposition Smoke", "PVC/Plastic Insulation Pyrolysis Vapors"]
+    installed_sensor_types: ["MQ-2", "DHT11"]
+    required_additional_sensors: ["Aspirating Very Early Warning Smoke Detector (VESDA)", "Thermal IR Thermography"]
+    ventilation_equipment: "Dedicated positive-pressure HVAC with HEPA filtration (closed loop)"
+    operator_verification_steps:
+      - "Inspect MCC panel indicators and check for localized breaker tripping"
+      - "Perform non-contact infrared thermal scan of busbars and contactors"
+    emergency_response_procedure: "If smoke verified, trip incoming breaker; prepare clean-agent (FM-200 / CO2) suppression."
+
+  Z06:
+    zone_id: "Z06"
+    name: "General Production Floor"
+    process_description: "Assembly machinery, conveyor lines, pneumatic tools, and operator workstations."
+    primary_hazards: ["H01", "H02", "H03", "H07"]
+    potential_substances: ["Mixed industrial contaminants", "Pneumatic lubricant mist", "Aerosol cleaners"]
+    installed_sensor_types: ["MQ-2", "MQ-135", "DHT11"]
+    required_additional_sensors: ["Ambient Dust & PM2.5/PM10 Monitor"]
+    ventilation_equipment: "Facility central air-handling units (AHU) and high-volume low-speed (HVLS) fans"
+    operator_verification_steps:
+      - "Inspect active tooling and machinery lubrication systems"
+      - "Assess general floor ventilation and air exchange balance"
+    emergency_response_procedure: "Log anomalous reading; notify area supervisor for localized process verification."
+
+  Z07:
+    zone_id: "Z07"
+    name: "Industrial Wastewater & Sump Treatment"
+    process_description: "Effluent collection sumps, neutralization tanks, and below-grade drainage trenches."
+    primary_hazards: ["H05", "H01", "H08"]
+    potential_substances: ["Hydrogen Sulfide (H2S)", "Methane", "Deoxygenated Atmosphere"]
+    installed_sensor_types: ["MQ-135", "MQ-2"]
+    required_additional_sensors: ["Certified Multi-Gas Detector (H2S, LEL, O2, CO) with internal sampling pump"]
+    ventilation_equipment: "Continuous sump headspace exhaust fan"
+    operator_verification_steps:
+      - "MANDATORY: Never enter below-grade pits without confined space entry permit"
+      - "Test atmosphere at 4-foot vertical intervals using calibrated multi-gas monitor"
+    emergency_response_procedure: "Sound confined space evacuation alarm; engage auxiliary mechanical ventilator; restrict entry."
+
+  Z08:
+    zone_id: "Z08"
+    name: "Ventilation and Exhaust Area"
+    process_description: "Main exhaust rooftop plenums, duct intersections, and filtration discharge stacks."
+    primary_hazards: ["H07"]
+    potential_substances: ["Trapped effluent mixtures", "Stagnant solvent vapors"]
+    installed_sensor_types: ["MQ-2", "MQ-135", "DHT11"]
+    required_additional_sensors: ["Exhaust Airflow Anemometer / Duct Static Pressure Transducer"]
+    ventilation_equipment: "Belt-driven industrial centrifugal exhaust blowers"
+    operator_verification_steps:
+      - "Inspect exhaust blower motor belt tension and drive shaft rotation"
+      - "Check ductwork intake dampers for physical obstruction or damper linkage detachment"
+    emergency_response_procedure: "Switch to standby secondary blower; verify duct draft restoration."

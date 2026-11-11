@@ -1,0 +1,68 @@
+{
+  "manifest_version": "1.0.0",
+  "provenance": "SIMULATED_BASELINE_PROFILE",
+  "acquisition_date": "2026-11-11",
+  "hardware_configuration": {
+    "mcu": "ESP32-WROOM-32 (DevKit V1)",
+    "adc_attenuation": "ADC_ATTEN_DB_11 (0 to ~3.1V)",
+    "adc_resolution": "12-bit (0-4095)",
+    "sensors": [
+      {
+        "name": "MQ-2",
+        "pin": "GPIO34",
+        "heater_voltage": "5.0V",
+        "load_resistor": "RL_onboard"
+      },
+      {
+        "name": "MQ-135",
+        "pin": "GPIO35",
+        "heater_voltage": "5.0V",
+        "load_resistor": "RL_onboard"
+      },
+      {
+        "name": "DHT11",
+        "pin": "GPIO4",
+        "bus": "1-wire digital"
+      }
+    ],
+    "actuators": [
+      {
+        "name": "Relay Module (Air Pump / Vent)",
+        "pin": "GPIO26",
+        "active_level": "LOW",
+        "safety_interlock": "decoupled_from_sensor_fault"
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "session_id": "SESSION_PHYS_01_WARMUP",
+      "type": "WARMUP",
+      "sample_count": 1800,
+      "duration_sec": 900.0,
+      "file_parquet": "ml/collection/physical_trials/SESSION_PHYS_01_WARMUP.parquet"
+    },
+    {
+      "session_id": "SESSION_PHYS_02_STABILIZED",
+      "type": "STABILIZED",
+      "sample_count": 3600,
+      "duration_sec": 1800.0,
+      "file_parquet": "ml/collection/physical_trials/SESSION_PHYS_02_STABILIZED.parquet"
+    },
+    {
+      "session_id": "SESSION_PHYS_03_DRIFT_DAY2",
+      "type": "DRIFT_DAY2",
+      "sample_count": 1800,
+      "duration_sec": 900.0,
+      "file_parquet": "ml/collection/physical_trials/SESSION_PHYS_03_DRIFT_DAY2.parquet"
+    }
+  ],
+  "validation_metrics": {
+    "total_windows": 3588,
+    "float32_int8_parity_pct": 100.0,
+    "clean_air_normal_recall_pct": 100.0,
+    "ood_rejections": 0
+  },
+  "hardware_verification_status": "PENDING_PHYSICAL_USB_CONNECTION",
+  "notes": "Downgraded from PHYSICAL_ESP32 to SIMULATED_BASELINE_PROFILE per M3.5 provenance audit. Numerical parity between Float32 and INT8 is confirmed on simulated baseline profile only."
+}

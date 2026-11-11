@@ -1,0 +1,4 @@
+model,accuracy,balanced_accuracy,macro_precision,macro_recall,macro_f1,log_loss,test_latency_ms,artifact_size_kb,external_baseline_classified_as_normal_pct
+Random Forest,0.725,0.725,0.8035,0.725,0.7236,1.2648,0.031,1445.5,0.0
+XGBoost,0.7208,0.7208,0.8254,0.7208,0.7154,1.0907,0.004,605.7,0.0
+Compact MLP (Keras),0.7063,0.7063,0.7459,0.7063,0.6869,1.2513,0.145,40.2,0.0

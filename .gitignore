@@ -1,0 +1,49 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build caches & IDE
+.next/
+out/
+build/
+dist/
+.pio/
+.vscode/
+.idea/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Hardware and temporary logs
+*.log
+hardware_raw_logs/
+.active_pids.json
+*.zip
+*.tar.gz
+
+# Secrets and local configurations
+.env
+.env.local
+
+# HUGE RAW UNZIPPED BENCHMARK DATASET DUMPS (> 3 GB)
+# These are external research archives already analyzed into our ML training artifacts
+twin+gas+sensor+arrays/
+Long-Term Drift Behavior of Electronic Nose Dataset/
+gas+sensor+array+drift+dataset+at+different+concentrations/
+indoor-air-quality-esp32-dataset-v1.0.0/
+my_ap_dataset_A Real-time Dataset of Air Pollution Monitoring Generated Using IoT.csv
+MQ135SensorData.csv
+gsalc.csv
+Gas_Sensors_Measurements.csv
+dataset_initial_scan.json

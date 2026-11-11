@@ -1,0 +1,74 @@
+version: "1.0.0"
+
+hazards:
+  H01:
+    hazard_id: "H01"
+    name: "Combustible Gas Response"
+    examples: "LPG, propane, methane, flammable process gases"
+    typical_locations: ["Z01", "Z02", "Z06"]
+    consequence: "Fire, deflagration, or explosion"
+    hardware_coverage: "MQ-2 broad combustible pattern monitoring"
+    gas_identity_confirmed: false
+
+  H02:
+    hazard_id: "H02"
+    name: "VOC and Solvent Vapor Accumulation"
+    examples: "Toluene, xylene, cleaning thinners, degreasers"
+    typical_locations: ["Z03", "Z04", "Z06"]
+    consequence: "Worker toxic exposure, respiratory irritation, flammable solvent buildup"
+    hardware_coverage: "MQ-135 broad air contaminant monitoring"
+    gas_identity_confirmed: false
+
+  H03:
+    hazard_id: "H03"
+    name: "Smoke and Abnormal Combustion"
+    examples: "Overheating wire insulation, electrical arcing, smoldering motor windings"
+    typical_locations: ["Z02", "Z05", "Z06"]
+    consequence: "Electrical fire, equipment destruction, structural damage"
+    hardware_coverage: "MQ-2 aerosol smoke particulate monitoring"
+    gas_identity_confirmed: false
+
+  H04:
+    hazard_id: "H04"
+    name: "Carbon Monoxide Hazard Context"
+    examples: "Flue exhaust back-drafting, faulty boiler burner, forklift exhaust"
+    typical_locations: ["Z02", "Z06"]
+    consequence: "Acute chemical asphyxiation, carboxyhemoglobin toxicity"
+    hardware_coverage: "NOT SUPPORTED (Requires dedicated electrochemical CO sensor)"
+    gas_identity_confirmed: false
+
+  H05:
+    hazard_id: "H05"
+    name: "Hydrogen Sulfide Hazard Context"
+    examples: "Sump anaerobic decomposition, stagnant wastewater"
+    typical_locations: ["Z07"]
+    consequence: "Immediate olfactory paralysis, pulmonary edema, rapid fatality"
+    hardware_coverage: "NOT SUPPORTED (Requires dedicated electrochemical H2S sensor)"
+    gas_identity_confirmed: false
+
+  H06:
+    hazard_id: "H06"
+    name: "Ammonia Hazard Context"
+    examples: "Refrigeration system leak, cleaning acid/alkali mixing"
+    typical_locations: ["Z04", "Z06"]
+    consequence: "Severe eye burns, caustic respiratory damage"
+    hardware_coverage: "NOT SUPPORTED (Requires dedicated NH3 sensor)"
+    gas_identity_confirmed: false
+
+  H07:
+    hazard_id: "H07"
+    name: "Ventilation and Extraction Failure"
+    examples: "Blower belt snap, blocked duct damper, clogged baghouse"
+    typical_locations: ["Z03", "Z06", "Z08"]
+    consequence: "Persistent accumulation of atmospheric contaminants"
+    hardware_coverage: "INDIRECT ONLY (Inferred from non-decaying elevated sensor levels)"
+    gas_identity_confirmed: false
+
+  H08:
+    hazard_id: "H08"
+    name: "Oxygen Deficiency or Enrichment"
+    examples: "Nitrogen/argon cylinder purge, deoxygenated confined space"
+    typical_locations: ["Z01", "Z07"]
+    consequence: "Rapid hypoxia, loss of consciousness, or enhanced flammability"
+    hardware_coverage: "NOT SUPPORTED (Requires dedicated optical/galvanic O2 cell)"
+    gas_identity_confirmed: false

@@ -1,0 +1,4 @@
+model,cross_board_b_accuracy,macro_f1,normal_baseline_recall,smoke_recall,voc_response_recall,mixture_recall,ood_uncertain_count,latency_ms
+Random Forest M2.7,0.9993,0.999,0.9989,1.0,1.0,1.0,3,0.032
+XGBoost M2.7,0.9993,0.9983,1.0,1.0,1.0,0.9933,1,0.002
+Compact MLP M2.7,1.0,1.0,1.0,1.0,1.0,1.0,0,0.084

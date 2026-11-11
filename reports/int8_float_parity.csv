@@ -1,0 +1,3 @@
+format,accuracy,macro_f1,normal_recall,smoke_recall,voc_recall,mixture_recall,model_size_kb,latency_ms,agreement_pct
+Keras Float32 (Original),1.0,1.0,1.0,1.0,1.0,1.0,38.67,0.104,100.0
+TFLite INT8 Ops (Quantized),1.0,1.0,1.0,1.0,1.0,1.0,5.19,0.004,100.0

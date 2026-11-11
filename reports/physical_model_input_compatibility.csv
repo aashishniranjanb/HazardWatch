@@ -1,0 +1,12 @@
+feature_name,dtype,physical_mean,physical_std,physical_min,physical_max,has_nulls,has_infinities,model_schema_compatible
+mq2_delta_baseline,float64,8.8559,15.1874,-5.2656,100.4344,False,False,True
+mq135_delta_baseline,float64,20.449,39.2576,-12.7633,230.4367,False,False,True
+mq2_ratio_baseline,float64,1.0261,0.0447,0.9845,1.2958,False,False,True
+mq135_ratio_baseline,float64,1.0134,0.0258,0.9916,1.1515,False,False,True
+gas_ratio_mq2_to_mq135,float64,0.226,0.0042,0.2188,0.252,False,False,True
+mq2_slope,float64,-0.0281,0.7015,-2.9091,2.5091,False,False,True
+mq135_slope,float64,-0.0646,1.5871,-6.7152,6.7152,False,False,True
+mq2_std,float64,3.0078,0.8196,0.9189,5.9151,False,False,True
+mq135_std,float64,6.8988,1.8591,1.5492,15.9805,False,False,True
+mq2_delta_window,float64,9.5014,2.7709,3.0,21.0,False,False,True
+mq135_delta_window,float64,21.842,6.5251,5.0,58.0,False,False,True

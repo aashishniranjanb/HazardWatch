@@ -1,0 +1,240 @@
+{
+  "milestone": "M2.5_VALIDATION_AUDIT_AND_BASELINE_RELATIVE_RETRAINING",
+  "experiment_id": "GAS-CLASSIFICATION-M2.5-BASELINE-RELATIVE-001",
+  "random_seed": 42,
+  "feature_schema_version": "2.0.0",
+  "features": [
+    "mq2_delta_baseline",
+    "mq135_delta_baseline",
+    "mq2_ratio_baseline",
+    "mq135_ratio_baseline",
+    "gas_ratio_mq2_to_mq135",
+    "mq2_slope",
+    "mq135_slope",
+    "mq2_std",
+    "mq135_std",
+    "mq2_delta_window",
+    "mq135_delta_window"
+  ],
+  "classes": [
+    "MIXTURE",
+    "NORMAL_BASELINE",
+    "SMOKE",
+    "VOC_RESPONSE"
+  ],
+  "partitions": {
+    "method": "SESSION_CONTIGUOUS_SPLIT_WITH_PURGE_GAPS",
+    "purge_gap_windows": 5,
+    "train_samples": 2228,
+    "val_samples": 476,
+    "test_samples": 440,
+    "external_baseline_samples": 6083
+  },
+  "models_evaluated": {
+    "Random Forest v2": {
+      "overall": {
+        "accuracy": 0.7295454545454545,
+        "balanced_accuracy": 0.7295454545454545,
+        "macro_precision": 0.8010681320232863,
+        "macro_recall": 0.7295454545454545,
+        "macro_f1": 0.7255984637698193,
+        "log_loss": 0.8508519549990764,
+        "latency_ms": 0.036209279840642754,
+        "artifact_size_kb": 1556.1025390625
+      },
+      "per_class": {
+        "MIXTURE": {
+          "precision": 0.974025974025974,
+          "recall": 0.6818181818181818,
+          "f1": 0.8021390374331551
+        },
+        "NORMAL_BASELINE": {
+          "precision": 0.7450980392156863,
+          "recall": 0.34545454545454546,
+          "f1": 0.4720496894409938
+        },
+        "SMOKE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VOC_RESPONSE": {
+          "precision": 0.48514851485148514,
+          "recall": 0.8909090909090909,
+          "f1": 0.6282051282051282
+        }
+      },
+      "confusion_matrix": [
+        [
+          75,
+          3,
+          0,
+          32
+        ],
+        [
+          0,
+          38,
+          0,
+          72
+        ],
+        [
+          0,
+          0,
+          110,
+          0
+        ],
+        [
+          2,
+          10,
+          0,
+          98
+        ]
+      ],
+      "external_baseline_evaluation": {
+        "total_samples": 6083,
+        "classified_as_normal_percentage": 5.227683708696367,
+        "prediction_distribution": {
+          "VOC_RESPONSE": 4885,
+          "MIXTURE": 880,
+          "NORMAL_BASELINE": 318
+        }
+      }
+    },
+    "XGBoost v2": {
+      "overall": {
+        "accuracy": 0.7340909090909091,
+        "balanced_accuracy": 0.7340909090909091,
+        "macro_precision": 0.804607843137255,
+        "macro_recall": 0.7340909090909091,
+        "macro_f1": 0.7277301018231508,
+        "log_loss": 1.0584168434143066,
+        "latency_ms": 0.0034397298639470882,
+        "artifact_size_kb": 632.48046875
+      },
+      "per_class": {
+        "MIXTURE": {
+          "precision": 0.9733333333333334,
+          "recall": 0.6636363636363637,
+          "f1": 0.7891891891891892
+        },
+        "NORMAL_BASELINE": {
+          "precision": 0.7450980392156863,
+          "recall": 0.34545454545454546,
+          "f1": 0.4720496894409938
+        },
+        "SMOKE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VOC_RESPONSE": {
+          "precision": 0.5,
+          "recall": 0.9272727272727272,
+          "f1": 0.6496815286624203
+        }
+      },
+      "confusion_matrix": [
+        [
+          73,
+          7,
+          0,
+          30
+        ],
+        [
+          0,
+          38,
+          0,
+          72
+        ],
+        [
+          0,
+          0,
+          110,
+          0
+        ],
+        [
+          2,
+          6,
+          0,
+          102
+        ]
+      ],
+      "external_baseline_evaluation": {
+        "total_samples": 6083,
+        "classified_as_normal_percentage": 1.0356731875719216,
+        "prediction_distribution": {
+          "MIXTURE": 3623,
+          "VOC_RESPONSE": 2397,
+          "NORMAL_BASELINE": 63
+        }
+      }
+    },
+    "Compact MLP v2": {
+      "overall": {
+        "accuracy": 0.6613636363636364,
+        "balanced_accuracy": 0.6613636363636364,
+        "macro_precision": 0.7256159160529232,
+        "macro_recall": 0.6613636363636364,
+        "macro_f1": 0.6386612961018616,
+        "log_loss": 1.3611527681350708,
+        "latency_ms": 0.2150627699765292,
+        "artifact_size_kb": 38.6728515625
+      },
+      "per_class": {
+        "MIXTURE": {
+          "precision": 0.9701492537313433,
+          "recall": 0.5909090909090909,
+          "f1": 0.7344632768361582
+        },
+        "NORMAL_BASELINE": {
+          "precision": 0.5,
+          "recall": 0.15454545454545454,
+          "f1": 0.2361111111111111
+        },
+        "SMOKE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "VOC_RESPONSE": {
+          "precision": 0.43231441048034935,
+          "recall": 0.9,
+          "f1": 0.584070796460177
+        }
+      },
+      "confusion_matrix": [
+        [
+          65,
+          8,
+          0,
+          37
+        ],
+        [
+          0,
+          17,
+          0,
+          93
+        ],
+        [
+          0,
+          0,
+          110,
+          0
+        ],
+        [
+          2,
+          9,
+          0,
+          99
+        ]
+      ],
+      "external_baseline_evaluation": {
+        "total_samples": 6083,
+        "classified_as_normal_percentage": 0.0,
+        "prediction_distribution": {
+          "VOC_RESPONSE": 6083
+        }
+      }
+    }
+  }
+}

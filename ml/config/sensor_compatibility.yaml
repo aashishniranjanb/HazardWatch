@@ -1,0 +1,102 @@
+version: "1.0.0"
+description: "Hardware compatibility profiles across research datasets"
+
+hardware_target:
+  mcu: "ESP32 DevKit V1"
+  adc_resolution: 12 # bits (0-4095)
+  available_sensors:
+    - "MQ-2"   # Analog ADC (combustible gas / LPG / smoke)
+    - "MQ-135" # Analog ADC (hazardous gases / air quality)
+    - "DHT11"  # Digital 1-wire (Temperature & Relative Humidity)
+  excluded_sensors:
+    - "MQ-7"   # Excluded from live hardware profile!
+    - "MQ-3"   # Alcohol-specific
+    - "MQ-5"   # LPG/natural gas
+    - "MQ-6"   # LPG
+    - "MQ-8"   # Hydrogen
+
+profiles:
+  HARDWARE_CORE_PROFILE:
+    description: "Datasets providing both MQ-2 and MQ-135 channels matching the ESP32 physical configuration"
+    compatible_datasets:
+      - filename: "Gas_Sensors_Measurements.csv"
+        mq2_channel: "MQ2"
+        mq135_channel: "MQ135"
+        dht11_temp: null
+        dht11_hum: null
+        status: "PRIMARY_TRAINING_CANDIDATE"
+        classes: ["NoGas", "Perfume", "Smoke", "Mixture"]
+        notes: "High fidelity simultaneous MQ-2 and MQ-135 readings with verified labels."
+
+      - filename: "multi_sensor_data.csv"
+        mq2_channel: "mq2_adc"
+        mq135_channel: "mq135_adc"
+        dht11_temp: null
+        dht11_hum: null
+        status: "BENCHMARK_UNMAPPED"
+        classes: ["0", "1", "2", "3", "4"]
+        notes: "Experimental project prototype data. Channel 0 verified as baseline; 1-4 require mapping."
+
+      - filename: "multi_sensor_data_baseline.csv"
+        mq2_channel: "mq2_adc"
+        mq135_channel: "mq135_adc"
+        dht11_temp: null
+        dht11_hum: null
+        status: "ANOMALY_BASELINE_REFERENCE"
+        classes: ["0"]
+        notes: "Continuous stable baseline run for normal-operation modeling."
+
+  MQ2_SINGLE_PROFILE:
+    description: "Datasets with isolated MQ-2 signal dynamics"
+    compatible_datasets:
+      - filename: "mq2_data.csv"
+        mq2_channel: "ADC"
+        status: "SIGNAL_ANALYSIS_ONLY"
+        classes: []
+        notes: "No ground-truth labels. Useful for ADC signal distribution and drift analysis."
+
+  MQ135_SINGLE_PROFILE:
+    description: "Datasets with isolated MQ-135 or environmental air quality readings"
+    compatible_datasets:
+      - filename: "dataset_alcohol_detection_using_gas_sensors.csv"
+        mq135_channel: "MQ-135"
+        dht11_temp: "Temparature (C)"
+        dht11_hum: "Humidity (%)"
+        status: "SECONDARY_VALIDATION"
+        classes: ["0", "1"]
+        notes: "Includes temperature & humidity alongside MQ-135 and MQ-3."
+
+      - filename: "MQ135SensorData.csv"
+        status: "RESEARCH_ARRAY"
+        classes: ["0", "1", "2", "3", "4", "5", "6"]
+        notes: "Gas array setup. Gas1-Gas6 represent resistance/concentrations."
+
+  ENVIRONMENTAL_ONLY_PROFILE:
+    description: "Datasets with purely temperature, humidity, or ambient meteorological data"
+    compatible_datasets:
+      - filename: "log_temp.csv"
+        status: "ENVIRONMENTAL_BENCHMARK"
+        notes: "DHT11 temperature & humidity readings."
+      - filename: "Kitchen Environment Air Quality Dataset.csv"
+        status: "THINGSPEAK_TELEMETRY"
+        notes: "Kitchen sensor telemetry."
+      - filename: "kitchen_data.csv"
+        status: "DUPLICATE_THINGSPEAK"
+        notes: "Identical duplicate of Kitchen Environment Air Quality Dataset.csv."
+
+  MUNICIPAL_POLLUTION_PROFILE:
+    description: "Regional EPA/outdoor fixed monitoring station records"
+    compatible_datasets:
+      - filename: "my_ap_dataset_A Real-time Dataset of Air Pollution Monitoring Generated Using IoT.csv"
+        status: "MUNICIPAL_AIR_POLLUTION"
+        notes: "City air monitoring (SO2, NO2, CO, O3, PM2.5, PM10). Not compatible with ESP32 direct raw inputs."
+
+  HIGH_DIMENSIONAL_SPECTRAL_PROFILE:
+    description: "Time-series electronic nose matrix (chemical drift/concentration)"
+    compatible_datasets:
+      - filename: "gsalc.csv"
+        status: "INCOMPATIBLE_HIGH_DIMENSIONAL"
+        notes: "9,002 continuous features per record for ethanol 100ppb spectrometer."
+      - filename: "Air Quality dataset for ADL classification.csv"
+        status: "ANONYMOUS_ADL"
+        notes: "Anonymous 6 sensor columns without gas calibration documentation."

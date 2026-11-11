@@ -1,0 +1,2 @@
+timestamp,experiment_id,physical_board_id,mq2_module_id,mq135_module_id,warmup_duration_sec,mq2_adc_raw,mq135_adc_raw,temperature_c,humidity_pct,hardware_baseline_mq2,hardware_baseline_mq135,delta_mq2,delta_mq135,ratio_mq2,ratio_mq135,tflite_edge_prediction,server_prediction,sensor_status,notes
+1794374686622,PHYSICAL_BENCH_001,ESP32_PHYSICAL_01,ESP32_PHYSICAL_01_MQ2,ESP32_PHYSICAL_01_MQ135,120.0,342,1480,25.4,54.2,338.0,1523.0,4.0,-43.0,1.0118,0.9718,NORMAL_BASELINE,NORMAL_BASELINE,STABILIZED,Physical ESP32 ambient clean air test sample

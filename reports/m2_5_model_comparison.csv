@@ -1,0 +1,4 @@
+model,accuracy,balanced_accuracy,macro_precision,macro_recall,macro_f1,normal_baseline_recall,smoke_recall,log_loss,test_latency_ms,artifact_size_kb,external_baseline_normal_pct
+Random Forest v2,0.7295,0.7295,0.8011,0.7295,0.7256,0.3455,1.0,0.8509,0.036,1556.1,5.23
+XGBoost v2,0.7341,0.7341,0.8046,0.7341,0.7277,0.3455,1.0,1.0584,0.003,632.5,1.04
+Compact MLP v2,0.6614,0.6614,0.7256,0.6614,0.6387,0.1545,1.0,1.3612,0.215,38.7,0.0
